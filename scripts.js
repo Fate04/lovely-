@@ -50,26 +50,30 @@ function displayRandomQuote() {
 
 // Countdown timer
 function updateCountdown() {
-  const nextMonthsary = new Date();
-  nextMonthsary.setMonth(nextMonthsary.getMonth() + 1);
-  nextMonthsary.setDate(1);
-  nextMonthsary.setHours(0, 0, 0, 0);
-
+  // Get current date and time
   const now = new Date();
+  
+  // Set the next monthsary to exactly 1 month from now at 12:00 AM
+  const nextMonthsary = new Date(now);
+  nextMonthsary.setMonth(now.getMonth() + 1); // Add 1 month
+  nextMonthsary.setDate(1); // Set to the 1st day of the next month
+  nextMonthsary.setHours(0, 0, 0, 0); // Set the time to 12:00 AM
+
+  // Calculate the difference between now and the next monthsary
   const diff = nextMonthsary - now;
+  
+  // Calculate days, hours, minutes, and seconds remaining
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const mins = Math.floor((diff / (1000 * 60)) % 60);
   const secs = Math.floor((diff / 1000) % 60);
+
+  // Update the countdown display
   document.getElementById("timer").textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
 }
 
-setInterval(rainHeart, 400);
-setInterval(rainPhoto, 1500);
-setInterval(displayRandomQuote, 8000);
+// Update the countdown every second
 setInterval(updateCountdown, 1000);
-updateCountdown();
-displayRandomQuote();
 
 // Button click → message
 function showLove(answer) {
