@@ -10,10 +10,11 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  overflow: hidden;
+  /* Removed the overflow property to allow scrolling */
   transition: background 5s ease-in-out;
   animation: bgAnimation 20s infinite alternate;
 }
+
 
 @keyframes bgAnimation {
   0% { background: linear-gradient(120deg, #cceeff, #ffffff); }
